@@ -64,7 +64,8 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR commandLine, INT)
     win32_exception::set_version(std::string(ver));
     SetUnhandledExceptionFilter(CreateMiniDump);
   }
-
+  
+/*
   // check if Kodi is already running
   std::string appName = CCompileInfo::GetAppName();
   CreateMutex(nullptr, FALSE, (appName + " Media Center").c_str());
@@ -79,7 +80,8 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR commandLine, INT)
     }
     return 0;
   }
-
+*/
+  
   if ((g_cpuInfo.GetCPUFeatures() & CPU_FEATURE_SSE2) == 0)
   {
     MessageBox(NULL, "No SSE2 support detected", (appName + ": Fatal Error").c_str(), MB_OK | MB_ICONERROR);
