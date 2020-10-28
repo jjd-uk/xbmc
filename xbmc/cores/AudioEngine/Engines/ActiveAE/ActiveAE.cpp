@@ -1649,7 +1649,6 @@ void CActiveAE::ApplySettingsToFormat(AEAudioFormat &format, AudioSettings &sett
       *mode = MODE_RAW;
   }
   // transcode
-  else if (settings.channels <= AE_CH_LAYOUT_2_0 && // no multichannel pcm
            settings.passthrough &&
            settings.ac3passthrough &&
            settings.ac3transcode &&
