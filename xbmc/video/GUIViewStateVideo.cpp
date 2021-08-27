@@ -238,13 +238,13 @@ CGUIViewStateWindowVideoNav::CGUIViewStateWindowVideoNav(const CFileItemList& it
         if (params.GetSetId() > -1) // Is this a listing within a set?
         {
           AddSortMethod(SortByYear, 562, LABEL_MASKS("%T", "%Y"));  // Title, Year | empty, empty
-          AddSortMethod(SortByDate, 552, LABEL_MASKS("%T","%J"));  // Title, Date | empty, empty
+          AddSortMethod(SortByDate, 552, LABEL_MASKS("%T", "%J"));  // Title, Date | empty, empty
           AddSortMethod(SortBySortTitle, sortAttributes, 556, LABEL_MASKS("%T", "%Y"));  // Title, Year | empty, empty
         }
         else
         {
           AddSortMethod(SortBySortTitle, sortAttributes, 556, LABEL_MASKS("%T", "%Y", "%T", "%Y"));  // Title, Year | Title, Year
-          AddSortMethod(SortByDate, 552, LABEL_MASKS("%T","%J","%T","%J"));  // Title, Date | Title, Date
+          AddSortMethod(SortByDate, 552, LABEL_MASKS("%T", "%J", "%T", "%J"));  // Title, Date | Title, Date
           AddSortMethod(SortByYear, 562, LABEL_MASKS("%T", "%Y", "%T", "%Y"));  // Title, Year | Title, Year
         }
         AddSortMethod(SortByRating, 563, LABEL_MASKS("%T", "%R", "%T", "%R"));  // Title, Rating | Title, Rating
