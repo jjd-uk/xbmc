@@ -31,7 +31,6 @@ std::string CDemuxStreamAudio::GetStreamType()
     }
     case AV_CODEC_ID_DTS:
     {
-      //! @todo: With ffmpeg >= 6.1 add new DTSX profile cases
       switch (profile)
       {
         case FF_PROFILE_DTS_96_24:
@@ -49,6 +48,12 @@ std::string CDemuxStreamAudio::GetStreamType()
         case FF_PROFILE_DTS_HD_HRA:
           strInfo = "DTS-HD HRA ";
           break;
+        case FF_PROFILE_DTS_HD_MA_X:
+          strInfo = "DTS:X ";
+          break;
+        case FF_PROFILE_DTS_HD_MA_X_IMAX:
+          strInfo = "DTS:X IMAX ";
+          break;
         default:
           strInfo = "DTS ";
           break;
@@ -62,8 +67,18 @@ std::string CDemuxStreamAudio::GetStreamType()
       strInfo = "MP3 ";
       break;
     case AV_CODEC_ID_TRUEHD:
-      strInfo = "TrueHD ";
+    {
+      switch (profile)
+      {
+        case FF_PROFILE_TRUEHD_ATMOS:
+          strInfo = "TrueHD Atmos ";
+          break;		  
+        default:	
+          strInfo = "TrueHD ";
+        break;
+      }
       break;
+    }
     case AV_CODEC_ID_AAC:
     {
       switch (profile)
