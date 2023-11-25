@@ -688,7 +688,7 @@
 	</variable>
 	<variable name="VideoVersionFileVar">
 		<value condition="Control.HasFocus(50)">$INFO[Container(50).ListItem.FileNameAndPath]</value>
-	    <value condition="Control.HasFocus(51)">$INFO[Container(51).ListItem.FileNameAndPath]</value>
+		<value condition="Control.HasFocus(51)">$INFO[Container(51).ListItem.FileNameAndPath]</value>
 		<value>$INFO[ListItem.FileNameAndPath]</value>
 	</variable>
 </includes>
