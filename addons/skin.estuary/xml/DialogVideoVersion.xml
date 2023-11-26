@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">201</defaultcontrol>
-	<onload condition="!String.IsEmpty(Container(50).ListItem.Art(poster))">SetProperty(poster,$ESCINFO[Container(50).ListItem.Art(poster)],home)</onload>
-	<onload condition="String.IsEmpty(Container(50).ListItem.Art(poster))">SetProperty(thumb,$ESCINFO[Container(50).ListItem.Art(thumb)],home)</onload>
 	<onload condition="Window.IsActive(videoversionplay)">Control.SetFocus(50)</onload>
-	<onunload>ClearProperty(poster,home)</onunload>
-	<onunload>ClearProperty(thumb,home)</onunload>
 	<include>Animation_DialogPopupOpenClose</include>
 	<controls>
 		<include condition="Window.IsActive(videoversion)">DialogVideoVersionLayout</include>
