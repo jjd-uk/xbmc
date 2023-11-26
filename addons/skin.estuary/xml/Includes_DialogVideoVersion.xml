@@ -102,7 +102,7 @@
 			<control type="togglebutton" id="202">
 				<width>300</width>
 				<height>100</height>
-				<label>$LOCALAIZE[31040]</label>
+				<label>$LOCALAIZE[31615]</label>
 				<font>font25_title</font>
 				<textoffsetx>20</textoffsetx>
 				<onclick>noop</onclick>
