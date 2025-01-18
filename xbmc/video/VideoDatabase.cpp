@@ -8496,7 +8496,13 @@ bool CVideoDatabase::GetMoviesByWhere(const std::string& strBaseDir, const Filte
     // navigation = from videoversions node
     const bool videoVersionNav{options.find("videoversionid") != options.end()};
     // navigation = list of assets of the movie
-    const bool assetsNav{options.find("assetType") != options.end()};
+    bool assetsNav{false};
+    int assetType{-1};
+    if (auto option = options.find("assetType"); option != options.end())
+    {
+      assetsNav = true;
+      assetType = option->second.asInteger();
+    }
 
     int total = -1;
 
@@ -8556,9 +8562,28 @@ bool CVideoDatabase::GetMoviesByWhere(const std::string& strBaseDir, const Filte
         }
         else if (assetsNav)
         {
-          // Display the name of the movie for a collection of movie assets rather than "Assets"
+          // Include the movie name in the displayed name of a collection of movie assets
           if (!items.HasProperty("customtitle"))
-            items.SetProperty("customtitle", movie.GetTitle());
+          {
+            const int msgId{[assetType]()
+                            {
+                              switch (assetType)
+                              {
+                                case static_cast<int>(VideoAssetType::VERSION):
+                                  return 40210; // "Versions"
+                                case static_cast<int>(VideoAssetType::EXTRA):
+                                  return 40211; // "Extras"
+                                default:
+                                  return 40209; // "Assets"
+                              }
+                            }()};
+            //! @todo works only for one level, not a very generic way to show the navigation of the items
+            //! @todo in the nav path displayed in top left corner of Esturay, is / a separator
+            //! added by core or by Estuary (therefore variable by skin)?
+            //! examples: Movies / Titles, Movies / Sintel
+            items.SetProperty("customtitle",
+                              movie.GetTitle() + " / " + g_localizeStrings.Get(msgId));
+          }
 
           if (movie.IsDefaultVideoVersion())
             item->Select(true);
