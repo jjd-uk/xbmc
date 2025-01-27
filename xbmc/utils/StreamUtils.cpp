@@ -15,6 +15,8 @@ int StreamUtils::GetCodecPriority(const std::string &codec)
    * ffmpeg can't decode dtshd_ma losslessy yet.
    */
   if (codec == "flac") // Lossless FLAC
+    return 8;
+  if (codec == "truehd_atmos") // Dolby TrueHD Atmos
     return 7;
   if (codec == "truehd") // Dolby TrueHD
     return 6;
