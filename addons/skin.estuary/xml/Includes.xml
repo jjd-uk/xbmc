@@ -20,6 +20,7 @@
 	<include file="View_500_Wall.xml" />
 	<include file="View_501_Banner.xml" />
 	<include file="View_502_FanArt.xml" />
+	<include file="View_504_MediaList.xml" />
 	<include file="Variables.xml" />
 	<include condition="Integer.IsLessOrEqual(System.ScreenHeight,720)" file="Constants_720.xml" />
 	<include condition="Integer.IsGreater(System.ScreenHeight,720)" file="Constants_1080.xml" />
@@ -1725,7 +1726,7 @@
 					<font>font10</font>
 					<aligny>center</aligny>
 					<textcolor>grey</textcolor>
-					<label>$VAR[MediaInfoListLabel2Var]</label>
+					<label>$INFO[ListItem.Duration,$LOCALIZE[180]: ][CR]$VAR[MediaInfoListLabel2Var]</label>
 				</control>
 			</itemlayout>
 			<focusedlayout height="$PARAM[height]" width="$PARAM[width]">
@@ -1761,7 +1762,7 @@
 					<height>65</height>
 					<font>font10</font>
 					<aligny>center</aligny>
-					<label>$VAR[MediaInfoListLabel2Var]</label>
+					<label>$INFO[ListItem.Duration,$LOCALIZE[180]: ][CR]$VAR[MediaInfoListLabel2Var]</label>
 				</control>
 			</focusedlayout>
 		</definition>
